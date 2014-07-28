@@ -3,32 +3,30 @@
 	<div class="content_box">
 		<div class="content_cl">
 			<ul>
-				<li><h2><%= articleData.times.year %> / <%= articleData.times.month %> / <%= articleData.times.day %></h2></li>
-				<li class="user"><%= articleData.name %></li>
-				<li class="clock"><%= articleData.times.hours %>:<%= articleData.times.minute %>:<%= articleData.times.seconds %></li>
+				<li><h2>2014 / 07 / 28</h2></li>
+				<li class="user">admin</li>
+				<li class="clock">22:22:22</li>
 				<li class="permalink">
-					<% if(articleData.type == 'c'){ %>
-						Public
-					<% }else{ %>
-						Private
-					<% } %>
+					公开｜私人
 				</li>
 			</ul>
 		</div>
 		<div class="content_cr">
-			<p><h1><%= articleData.title %></h1></p>
-			<% if(user && (user.name == articleData.name)){ %>
-				<p>
-					<span><a class="edit" href="/e/<%= articleData.name %>/<%= articleData.times.year %>/<%= articleData.times.month %>/<%= articleData.times.day %>/<%= articleData.title %>">Update</a></span>
-					<span><a class="edit" href="/d/<%= articleData.name %>/<%= articleData.times.year %>/<%= articleData.times.month %>/<%= articleData.times.day %>/<%= articleData.title %>">Delete</a></span>
-				</p>
-			<% } %>
+			<p><h1>"风暴追逐者"拍摄惊人沙尘暴</h1></p>
+			<p>
+				<span><a class="edit" href="###">修改</a></span>
+				<span><a class="edit" href="###">删除</a></span>
+			</p>
 			<div class="content_txt">
 				<p>
-					<%- articleData.content %>
+					2014年7月28日消息，美国亚利桑那州凤凰城，沙尘暴来袭。39岁的“风暴追逐者”Mike Olbinksi在橙色“沙墙”向城市推进时拍摄到了这些惊人的画面。气象学家称，每年此时，亚利桑那州都是沙尘暴的“重灾区”。统计数字显示，当地平均每年要遭遇3到4次大型沙尘暴（能见度小于400米）袭击。
+					2014年7月28日消息，美国亚利桑那州凤凰城，沙尘暴来袭。39岁的“风暴追逐者”Mike Olbinksi在橙色“沙墙”向城市推进时拍摄到了这些惊人的画面。气象学家称，每年此时，亚利桑那州都是沙尘暴的“重灾区”。统计数字显示，当地平均每年要遭遇3到4次大型沙尘暴（能见度小于400米）袭击。
+					2014年7月28日消息，美国亚利桑那州凤凰城，沙尘暴来袭。39岁的“风暴追逐者”Mike Olbinksi在橙色“沙墙”向城市推进时拍摄到了这些惊人的画面。气象学家称，每年此时，亚利桑那州都是沙尘暴的“重灾区”。统计数字显示，当地平均每年要遭遇3到4次大型沙尘暴（能见度小于400米）袭击。
+					2014年7月28日消息，美国亚利桑那州凤凰城，沙尘暴来袭。39岁的“风暴追逐者”Mike Olbinksi在橙色“沙墙”向城市推进时拍摄到了这些惊人的画面。气象学家称，每年此时，亚利桑那州都是沙尘暴的“重灾区”。统计数字显示，当地平均每年要遭遇3到4次大型沙尘暴（能见度小于400米）袭击。
+					2014年7月28日消息，美国亚利桑那州凤凰城，沙尘暴来袭。39岁的“风暴追逐者”Mike Olbinksi在橙色“沙墙”向城市推进时拍摄到了这些惊人的画面。气象学家称，每年此时，亚利桑那州都是沙尘暴的“重灾区”。统计数字显示，当地平均每年要遭遇3到4次大型沙尘暴（能见度小于400米）袭击。
+					2014年7月28日消息，美国亚利桑那州凤凰城，沙尘暴来袭。39岁的“风暴追逐者”Mike Olbinksi在橙色“沙墙”向城市推进时拍摄到了这些惊人的画面。气象学家称，每年此时，亚利桑那州都是沙尘暴的“重灾区”。统计数字显示，当地平均每年要遭遇3到4次大型沙尘暴（能见度小于400米）袭击。
 				</p>
 			</div>
 		</div>
 	</div>
 </div>
-<%- include footer %>
