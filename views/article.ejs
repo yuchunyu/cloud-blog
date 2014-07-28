@@ -1,0 +1,34 @@
+<%- include header %>
+<div class="content_c">
+	<div class="content_box">
+		<div class="content_cl">
+			<ul>
+				<li><h2><%= articleData.times.year %> / <%= articleData.times.month %> / <%= articleData.times.day %></h2></li>
+				<li class="user"><%= articleData.name %></li>
+				<li class="clock"><%= articleData.times.hours %>:<%= articleData.times.minute %>:<%= articleData.times.seconds %></li>
+				<li class="permalink">
+					<% if(articleData.type == 'c'){ %>
+						Public
+					<% }else{ %>
+						Private
+					<% } %>
+				</li>
+			</ul>
+		</div>
+		<div class="content_cr">
+			<p><h1><%= articleData.title %></h1></p>
+			<% if(user && (user.name == articleData.name)){ %>
+				<p>
+					<span><a class="edit" href="/e/<%= articleData.name %>/<%= articleData.times.year %>/<%= articleData.times.month %>/<%= articleData.times.day %>/<%= articleData.title %>">Update</a></span>
+					<span><a class="edit" href="/d/<%= articleData.name %>/<%= articleData.times.year %>/<%= articleData.times.month %>/<%= articleData.times.day %>/<%= articleData.title %>">Delete</a></span>
+				</p>
+			<% } %>
+			<div class="content_txt">
+				<p>
+					<%- articleData.content %>
+				</p>
+			</div>
+		</div>
+	</div>
+</div>
+<%- include footer %>

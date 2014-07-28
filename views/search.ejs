@@ -1,0 +1,45 @@
+<%- include header %>
+<div class="content_c">
+<% articleData.forEach(function (article, index) { %>
+	<div class="content_box">
+		<div class="content_cl">
+			<ul>
+				<li><h2><%= article.times.year %> / <%= article.times.month %> / <%= article.times.day %></h2></li>
+				<li class="user"><%= article.name %></li>
+				<li class="clock"><%= article.times.hours %>:<%= article.times.minute %>:<%= article.times.seconds %></li>
+				<li class="permalink">
+					<% if(article.type == 'c'){ %>
+						Public
+					<% }else{ %>
+						Private
+					<% } %>
+				</li>
+			</ul>
+		</div>
+		<div class="content_cr">
+			<p><h1><a href="/u/<%= article.name %>/<%= article.times.year %>/<%= article.times.month %>/<%= article.times.day %>/<%= article.title %>"><%= article.title %></a></h1></p>
+			<div class="content_txt">
+				<p id="content_<%-index%>">
+					<script type="text/javascript">
+						var str = '<%- article.content %>'.replace(/<br[^>]*>/g, "\n");
+						str = (str.length > 140) ? (str.substring(0,140) + '...') : (str);
+						document.getElementById('content_<%- index %>').innerHTML = str;
+					</script></p>
+			</div>
+		</div>
+		<a href="#" class="more">read more...</a>
+	</div>
+<% }) %>
+	<% if(qs_msg != 'true'){ %>
+		<div class="errorBox"><h2><%- qs_msg %></h2></div>
+	<% } %>
+	<div class="pageBox">
+		<% if(!isFirstPage){ %>
+	    	<span class="prepage"><a title="上一页" href="?keyword=<%= keyword %>&p=<%= page-1 %>">上一页</a></span>
+	    <% } %>
+	    <% if(!isLastPage){ %>
+	    	<span class="nextpage"><a title="下一页" href="?keyword=<%= keyword %>&p=<%= page+1 %>">下一页</a></span>
+	    <% } %>
+	</div>
+</div>
+<%- include footer %>

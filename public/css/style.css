@@ -1,0 +1,195 @@
+*{margin:0; padding:0;}
+li{list-style:none;}
+img{border:none;}
+a{text-decoration:none;}
+/*input,textarea{outline:none; resize:none; border:none;}*/
+body {
+  font: 12px/1.5 "微软雅黑", Arial, sans-serif;
+  width:100%;
+  background: url('../images/content.png');
+}
+body,html{height:100%;overflow-x: hidden;}
+a{color: #00B7FF;}
+.fl{float: left;}
+.fr{float: right;}
+.topbar{width:100%;height:150px;background: url('../images/header-bg.png');overflow: hidden;margin-bottom: 20px;}
+.topbar ul{width: 100%;height:60px;}
+.topbar li{height: 60px;line-height: 60px;margin-left: 10px;margin-right: 10px;text-align: center;}
+.topbar li a{color: #ffffff;}
+.topbar li a:hover{color: #ff6600;}
+.foot{width:100%;height:40px;text-align: center;}
+
+
+.center{
+	margin: 0 auto;
+	display: block;
+	position: relative;
+}
+.content_l{
+	width: 870px;
+	float: left;
+	margin-top: 10px;
+	margin-left: 80px;
+}
+.content_c{
+	width: 870px;
+	float: left;
+	margin-top: 10px;
+	margin-left: 180px;
+}
+.content_box{
+	width:100%;
+	overflow: hidden;
+	border-bottom: 1px #000000 solid;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+.content_cl{
+	width:150px;
+	float: left;
+}
+.content_cl ul{
+	width:100%;
+}
+.content_cl ul li{
+	width:90%;
+	text-align: right;
+	padding: 4px 0;
+	border-bottom: 1px solid #E5E5E5;
+}
+.content_cl ul li.user{
+	background: url(../images/user.png) no-repeat 2px center;
+}
+.content_cl ul li.clock{
+	background: url(../images/clock.png) no-repeat 2px center;
+}
+.content_cl ul li.permalink{
+	background: url(../images/permalink.png) no-repeat 2px center;
+}
+.content_cr{
+	width: 720px;
+	float: left;
+}
+.content_r{
+	width: 250px;
+	float: right;
+	margin-right: 50px;
+}
+.content_r_t{
+	border-bottom: 1px #000000 solid;
+	padding: 5px;
+}
+.content_r_b{
+	padding: 3px;
+}
+.content_txt{
+	width: 100%;
+	padding: 10px 0 20px 0;
+	line-height: 24px;
+	color: #4e4e4e;
+	font-size: 14px;
+}
+
+.more{
+	font-weight: bold;
+	color: #0b0b0b;
+	text-decoration: underline;
+	float: right;
+	clear: both;
+	display: block;
+}
+.pTitle{
+	width: 600px;
+	height: 30px;
+	padding: 0 9px;
+	line-height: 28px;
+	font-size: 14px;
+	color: #333;
+	background-color: #fff;
+	border: 1px solid #9a9a9a;
+	border-right-color: #ccc;
+	border-bottom-color: #ccc;
+	margin-right: 10px;
+}
+.pType{
+	font-size: 18px;
+}
+.pContentBox{
+	width: 820px;
+	padding: 0 25px 25px 25px;
+	border: 1px solid #dfdfdf;
+	background: #fafafa;
+}
+.pContentBox div{
+	width:100%;
+	height: 46px;
+	background-color: #fafafa;
+}
+.submit{
+	height:28px;
+	width:80px;
+	margin-top: 10px;
+}
+.headbar{
+	width:100%;
+	height:85px;
+	line-height: 85px;
+	padding-left: 100px;
+}
+.pageBox{
+	width:98%;
+	padding: 10px;
+	text-align: right;
+	font-size: 18px;
+	height: 30px;
+}
+
+.loginBox,.regBox,.errorBox{
+	width: 320px;
+	height:auto;
+	margin: 80px auto;
+	padding: 15px;
+	border:5px #e5e5e5 dotted;
+	font-size: 18px;
+	text-align: center;
+	overflow: hidden;
+}
+.loginBox h3,.regBox h3{
+	color:red;
+	font-size: 16px;
+}
+.errorBox h2{
+	color:red;
+}
+.loginBox input[type="text"],.loginBox input[type="password"],.regBox input[type="text"],.regBox input[type="password"]{
+	width: 200px;
+	height: 28px;
+	padding: 0 9px;
+	line-height: 26px;
+	font-size: 14px;
+	color: #333;
+	background-color: #fff;
+	border: 1px solid #9a9a9a;
+	border-right-color: #ccc;
+	border-bottom-color: #ccc;
+	margin-top: 10px;
+}
+.edit{
+	margin:2px;
+	padding:2px 5px;
+	border-radius:3px;
+	background-color:#f3f3f3;
+	color:#333;
+	font-size:14px;
+	display:inline-block;
+}
+.edit:hover{
+	text-decoration:none;
+	background-color:#f00;
+	color:#fff;
+}
+.search{
+	float: right;
+	margin-right: 100px;
+	margin-top: 20px;
+}

@@ -1,0 +1,24 @@
+<%- include header %>
+<div class="content_c">
+	<form method="post">
+		<div>
+			<input type="text" name="title" class="pTitle" value="<%- articleData.title %>" readonly="readonly" />
+			<input type="checkbox" name="type" value="c" 
+			<% if(articleData.type == "c"){ %>
+				checked="true"
+			<% }else{ %>
+			<% } %>
+			>
+			<span class="pType">Publicly released[公开发表]</span>
+		</div>
+		<br />
+		<div class="pContentBox">
+			<div>
+				
+			</div>
+			<textarea name="content" rows="20" cols="100"><%- articleData.content %></textarea><br />
+		</div>
+		<input type="submit" value="Submit" class="submit"/>
+	</form>
+</div>
+<%- include footer %>
