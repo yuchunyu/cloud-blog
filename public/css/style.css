@@ -193,3 +193,33 @@ a{color: #00B7FF;}
 	margin-right: 100px;
 	margin-top: 20px;
 }
+
+.addBtn {
+    white-space: nowrap;
+    text-transform: uppercase;
+    font-weight: bold;
+    vertical-align: top;
+    color: #fff;
+    padding: 5px 14px;
+    cursor: pointer;
+    display: block;
+    float: right;
+    text-indent: 0;
+    text-align: center;
+    font-size: 16px;
+    border-radius: 5px;
+    margin: 10px 5px 0 0px;
+    border: 1px solid #52ab0e;
+    background-color: #65db0b;
+}
+
+.addBtn:hover {
+    color: #fff;
+    background: #73e615;
+    border: 1px solid #6ed415;
+}
+
+.addBtn:active{
+    border: 1px solid #52ab0e;
+    background-color: #52ab0e;
+}
