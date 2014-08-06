@@ -4,44 +4,53 @@
 	输入密码：<input type="password" id="password"/><br />
 	确认密码：<input type="password" id="passwordRepeat"/><br />
 	<a class="addBtn" href="###" id="regUser">注册</a>
-	<a class="addBtn" href="###" id="login">登录</a>
+	<a class="addBtn" href="/login" id="login">登录</a>
 </div>
 <%- include footer %>
 <script type="text/javascript">
 $(function(){
-	var userName,password,passwordRepeat;
+	var userName,passWord,passwordRepeat;
 	//注册
 	$('#regUser').click(function(){
 		userName = $('#userName').val();
-		password = $('#password').val();
+		passWord = $('#password').val();
 		passwordRepeat = $('#passwordRepeat').val();
 		//校验
-		changeCheck();
+		if(changeCheck()){
+			$.ajax({
+                type: 'POST',
+                url: '/reg',
+                data: {userName : userName, passWord : passWord},
+                success: function(result){
+                    console.log(result);
+                }
+            });
+		}
 	});
 
 	function changeCheck(){
-		var flag = true;
-		var patrn = /^(\w){6,20}$/;
+		var patrn = /^(\w){5,20}$/;
 		if('' == userName){
 			toastr.warning('用户名不能为空');
 			return false;
 		}
 		if(!patrn.exec(userName)){
-			toastr.warning('用户名只能输入6-20个字母、数字、下划线');
+			toastr.warning('用户名只能输入5-20个字母、数字、下划线');
 			return false;
 		}
-		if('' == password || '' == passwordRepeat){
+		if('' == passWord || '' == passwordRepeat){
 			toastr.warning('密码不能为空');
 			return false;
 		}
-		if(password != passwordRepeat){
+		if(passWord != passwordRepeat){
 			toastr.warning('密码不相同,请重新输入');
 			return false;
 		}
-		if(!patrn.exec(password) || !patrn.exec(passwordRepeat)){
-			toastr.warning('密码只能输入6-20个字母、数字、下划线');
+		if(!patrn.exec(passWord) || !patrn.exec(passwordRepeat)){
+			toastr.warning('密码只能输入5-20个字母、数字、下划线');
 			return false;
 		}
+		return true;
 	}
 });
 </script>
