@@ -1,8 +1,54 @@
 <%- include header %>
 <div class="loginBox">
-	帐户姓名：<input type="text" name="name"/><br />
-	帐户密码：<input type="password" name="password"/><br />
+	帐户姓名：<input type="text" id="userName"/><br />
+	帐户密码：<input type="password" id="password"/><br />
 	<a class="addBtn" href="###" id="login">登录</a>
 	<a class="addBtn" href="/reg" id="regUser">注册</a>
 </div>
 <%- include footer %>
+<script type="text/javascript">
+$(function(){
+	var userName,passWord;
+	//登录
+	$('#login').click(function(){
+		userName = $('#userName').val();
+		passWord = $('#password').val();
+		//校验
+		if(changeCheck()){
+			$.ajax({
+                type: 'POST',
+                url: '/login',
+                data: {userName : userName, passWord : passWord},
+                success: function(result){
+                    if(0 == result.status){
+                    	toastr.success(result.content);
+                    }else{
+                    	toastr.error(result.content);
+                    }
+                }
+            });
+		}
+	});
+
+	function changeCheck(){
+		var patrn = /^(\w){5,20}$/;
+		if('' == userName){
+			toastr.warning('用户名不能为空');
+			return false;
+		}
+		if(!patrn.exec(userName)){
+			toastr.warning('用户名只能输入5-20个字母、数字、下划线');
+			return false;
+		}
+		if('' == passWord){
+			toastr.warning('密码不能为空');
+			return false;
+		}
+		if(!patrn.exec(passWord)){
+			toastr.warning('密码只能输入5-20个字母、数字、下划线');
+			return false;
+		}
+		return true;
+	}
+});
+</script>

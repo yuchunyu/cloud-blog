@@ -22,7 +22,11 @@ $(function(){
                 url: '/reg',
                 data: {userName : userName, passWord : passWord},
                 success: function(result){
-                    console.log(result);
+                    if(0 == result.status){
+                    	toastr.success(result.content);
+                    }else{
+                    	toastr.error(result.content);
+                    }
                 }
             });
 		}
