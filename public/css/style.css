@@ -8,7 +8,7 @@ body {
   width:100%;
   background: url('../images/content.png');
 }
-body,html{height:100%;overflow-x: hidden;}
+body,html{height:100%;}
 a{color: #00B7FF;}
 .fl{float: left;}
 .fr{float: right;}
@@ -19,7 +19,7 @@ a{color: #00B7FF;}
 .topbar li a:hover{color: #ff6600;}
 .foot{width:100%;height:40px;text-align: center;}
 
-
+/*
 .center{
 	margin: 0 auto;
 	display: block;
@@ -144,36 +144,10 @@ a{color: #00B7FF;}
 	height: 30px;
 }
 
-.loginBox,.regBox,.errorBox{
-	width: 320px;
-	height:auto;
-	margin: 80px auto;
-	padding: 15px;
-	border:5px #e5e5e5 dotted;
-	font-size: 18px;
-	text-align: center;
-	overflow: hidden;
-}
-.loginBox h3,.regBox h3{
-	color:red;
-	font-size: 16px;
-}
 .errorBox h2{
 	color:red;
 }
-.loginBox input[type="text"],.loginBox input[type="password"],.regBox input[type="text"],.regBox input[type="password"]{
-	width: 200px;
-	height: 28px;
-	padding: 0 9px;
-	line-height: 26px;
-	font-size: 14px;
-	color: #333;
-	background-color: #fff;
-	border: 1px solid #9a9a9a;
-	border-right-color: #ccc;
-	border-bottom-color: #ccc;
-	margin-top: 10px;
-}
+
 .edit{
 	margin:2px;
 	padding:2px 5px;
@@ -193,33 +167,25 @@ a{color: #00B7FF;}
 	margin-right: 100px;
 	margin-top: 20px;
 }
+*/
+.headbar{width:100%;height:85px;line-height: 85px;padding-left: 100px;}
+.loginBox,.regBox,.errorBox{width: 320px;height: auto;margin: 80px auto;padding: 15px;border:5px #e5e5e5 dotted;font-size: 18px;text-align: center;overflow: hidden;}
+.loginBox input[type="text"],.loginBox input[type="password"],.regBox input[type="text"],.regBox input[type="password"]{width: 200px;height: 28px;padding: 0 9px;line-height: 26px;font-size: 14px;color: #333;background-color: #fff;border: 1px solid #9a9a9a;border-right-color: #ccc;border-bottom-color: #ccc;margin-top: 10px;}
+.addBtn {white-space: nowrap;text-transform: uppercase;font-weight: bold;vertical-align: top;color: #fff;padding: 5px 14px;cursor: pointer;display: block;float: right;text-indent: 0;text-align: center;font-size: 16px;border-radius: 5px;margin: 10px 5px 0 0px;border: 1px solid #52ab0e;background-color: #65db0b;}
+.addBtn:hover {color: #fff;background: #73e615;border: 1px solid #6ed415;}
+.addBtn:active{border: 1px solid #52ab0e;background-color: #52ab0e;}
+.center{padding: 10px;overflow: hidden;}
+.center .info{cursor:pointer;margin:10px;width:280px;height:auto;-moz-border-radius: 8px;-webkit-border-radius: 8px;border-radius:8px;-moz-box-shadow:0 0 11px #666666;-webkit-box-shadow:0 0 11px #666666;box-shadow:0 0 11px #666666;background:#ffffff;}
+.center .info .pic{width:260px;height:auto;margin:0 auto;padding-top:10px;}
+.center .info .pic img{width:260px;-moz-border-radius: 3px;-webkit-border-radius: 3px;border-radius:3px;background:url(../images/loding.gif) no-repeat center;}
+.center .info .title{padding-bottom: 5px;border-bottom: 1px #ccc solid;width:260px;height:auto;margin:0 auto;text-align:right;color:#666666;font-size:18px;font-weight:bold;overflow:hidden;}
+.center .info .title span{color: #444444;}
+.center .info .desc{padding-top: 10px;padding-bottom: 5px;border-bottom: 1px #ccc solid;width:260px;height:auto;margin:0 auto;text-align:left;color:#999;font-size:15px;overflow:hidden;}
+.center .info .desc span{color: #444444;}
+.center .info .user{padding-top: 5px;padding-bottom: 10px;width:260px;height:auto;margin:0 auto;text-align:right;color:#999;font-size:15px;overflow:hidden;}
+.center .info .user span{color: #444444;}
+.center .info .user i{margin: 0 5px;}
 
-.addBtn {
-    white-space: nowrap;
-    text-transform: uppercase;
-    font-weight: bold;
-    vertical-align: top;
-    color: #fff;
-    padding: 5px 14px;
-    cursor: pointer;
-    display: block;
-    float: right;
-    text-indent: 0;
-    text-align: center;
-    font-size: 16px;
-    border-radius: 5px;
-    margin: 10px 5px 0 0px;
-    border: 1px solid #52ab0e;
-    background-color: #65db0b;
-}
+/*.box img {max-width: 100%}*/
 
-.addBtn:hover {
-    color: #fff;
-    background: #73e615;
-    border: 1px solid #6ed415;
-}
 
-.addBtn:active{
-    border: 1px solid #52ab0e;
-    background-color: #52ab0e;
-}

@@ -33,13 +33,14 @@ $(function(){
 	});
 
 	function changeCheck(){
-		var patrn = /^(\w){5,20}$/;
+		var userPatrn = /^(\w){5,10}$/;
+		var pwdPatrn = /^(\w){5,10}$/;
 		if('' == userName){
 			toastr.warning('用户名不能为空');
 			return false;
 		}
-		if(!patrn.exec(userName)){
-			toastr.warning('用户名只能输入5-20个字母、数字、下划线');
+		if(!userPatrn.exec(userName)){
+			toastr.warning('用户名只能输入5-10个字母、数字、下划线');
 			return false;
 		}
 		if('' == passWord || '' == passwordRepeat){
@@ -50,7 +51,7 @@ $(function(){
 			toastr.warning('密码不相同,请重新输入');
 			return false;
 		}
-		if(!patrn.exec(passWord) || !patrn.exec(passwordRepeat)){
+		if(!pwdPatrn.exec(passWord) || !pwdPatrn.exec(passwordRepeat)){
 			toastr.warning('密码只能输入5-20个字母、数字、下划线');
 			return false;
 		}
