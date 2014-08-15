@@ -185,7 +185,34 @@ a{color: #00B7FF;}
 .center .info .user{padding-top: 5px;padding-bottom: 10px;width:260px;height:auto;margin:0 auto;text-align:right;color:#999;font-size:15px;overflow:hidden;}
 .center .info .user span{color: #444444;}
 .center .info .user i{margin: 0 5px;}
-
-/*.box img {max-width: 100%}*/
-
+/* back-to-top */
+#back-to-top{
+      position:fixed;
+      bottom:30px;
+      right:30px;
+      cursor:pointer;
+}
+#back-to-top a{
+      text-align:center;
+      text-decoration:none;
+      color:#ffffff;
+      background:#d1d1d1;
+      border-radius:6px;
+      display:block;
+      height:80px;
+      width:80px;	
+      transition:background 1s;
+      -moz-transition:background 1s;
+      -webkit-transition:background 1s;
+      -o-transition:background 1s;
+      text-align: center;
+}
+#back-to-top a:hover{
+      background:#979797;
+}
+#back-to-top a i{
+	font-size:50px;
+	line-height: 60px;
+	display: block;
+}
 
