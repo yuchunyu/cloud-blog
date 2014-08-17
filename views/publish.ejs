@@ -1,16 +1,24 @@
 <%- include header %>
-<div class="content_c">
+<div class="content">
+	<div class="publish">
 		<div>
-			<input type="text" name="title" class="pTitle"/>
-			<input type="checkbox" name="type" value="c" checked="true">
-			<span class="pType">Publicly released[公开发表]</span>
+			<h1>发布文章</h1>
 		</div>
 		<br />
-		<div class="pContentBox">
-			<div>
-				
-			</div>
-			<textarea name="content" rows="20" cols="100"></textarea><br />
+		<div>
+			<span class="pTitle">文章标题:</span>
+			<input type="text" name="title" class="pTitleText"/>
+			<input type="checkbox" name="type" value="c" checked="true">
+			<span class="pType">公开发表</span>
 		</div>
-		<input type="submit" value="Submit" class="submit"/>
+		<br />
+		<div>
+			<textarea class="ckeditor form-control text" name="editor1" id="textEditable"></textarea>
+		</div>
+		<div>
+			<a class="addBtn" href="###">提交</a>
+		</div>
+	</div>
 </div>
+<script type="text/javascript" src="ckeditor/ckeditor.js"></script>  
+<script type="text/javascript" src="ckeditor/config.js"></script>  

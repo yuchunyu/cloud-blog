@@ -216,3 +216,30 @@ a{color: #00B7FF;}
 	display: block;
 }
 
+.publish{
+	margin: 0 auto;
+	text-align: left;
+	max-width:800px; 
+	width:100%;
+}
+.pTitle{
+	font-size: 17px;
+	margin-right: 10px;
+}
+.pTitleText{
+	max-width: 500px;
+	width: 70%;
+	height: 30px;
+	padding: 0 9px;
+	line-height: 28px;
+	font-size: 14px;
+	color: #333;
+	background-color: #fff;
+	border: 1px solid #9a9a9a;
+	border-right-color: #ccc;
+	border-bottom-color: #ccc;
+	margin-right: 10px;
+}
+.pType{
+	font-size: 14px;
+}
