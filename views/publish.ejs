@@ -1,19 +1,39 @@
 <%- include header %>
+<link href="css/croppic.css" rel="stylesheet">
+<style type="text/css">
+.publish{cursor:pointer;height:auto;-moz-border-radius: 8px;-webkit-border-radius: 8px;border-radius:8px;-moz-box-shadow:0 0 11px #666666;-webkit-box-shadow:0 0 11px #666666;box-shadow:0 0 11px #666666;background:#ffffff;overflow:hidden;}
+.publish .title{border-bottom: 1px #ccc solid;}
+.publish .title h1{margin: 15px 0px 5px 15px;} 
+.publish .pTitleBox{margin: 5px 15px 15px 15px;overflow:hidden;}
+.publish .pContentBox{margin: 5px 15px 15px 15px;overflow:hidden;}
+</style>
 <div class="content">
 	<div class="publish">
-		<div>
+		<div class="title">
 			<h1>发布文章</h1>
 		</div>
 		<br />
-		<div>
+		<div class="pTitleBox">
 			<span class="pTitle">文章标题:</span>
 			<input type="text" name="title" class="pTitleText"/>
 			<input type="checkbox" name="type" value="c" checked="true">
 			<span class="pType">公开发表</span>
+			<span class="addBtn" style="margin: 0;" id="cropContainerHeaderButton">上传栏目图</span>
 		</div>
-		<br />
-		<div>
-			<textarea class="ckeditor form-control text" name="editor1" id="textEditable"></textarea>
+		<div class="pContentBox">
+			<div class="fl" style="width:28%;overflow:hidden;height:310px;">
+				<div id="croppic">
+					<div class="cropControls cropControlsUpload">  
+					</div>
+					<form class="croppic_imgUploadForm" style="display: none; visibility: hidden;">  
+						<input type="file" name="img">
+					</form>
+				</div>
+			</div>
+			<div class="fl" style="width:72%">
+				<textarea class="ckeditor form-control text" name="editor1" id="textEditable"></textarea>
+			</div>
+			
 		</div>
 		<div>
 			<a class="addBtn" href="###" id="insertArticle">提交</a>
@@ -23,6 +43,8 @@
 <%- include footer %>
 <script type="text/javascript" src="ckeditor/ckeditor.js"></script>  
 <script type="text/javascript" src="ckeditor/config.js"></script>  
+<script type="text/javascript" src="js/croppic.min.js"></script>
+
 <script type="text/javascript">
 $(function(){
 	$('#insertArticle').click(function(){
@@ -54,5 +76,26 @@ $(function(){
         });
 
 	});
+
+
+	var croppicHeaderOptions = {
+			uploadUrl:'img_save_to_file.php',
+			cropData:{
+				"dummyData":1,
+				"dummyData2":"asdas"
+			},
+			cropUrl:'img_crop_to_file.php',
+			customUploadButtonId:'cropContainerHeaderButton',
+			modal:false,
+			loaderHtml:'<div class="loader bubblingG"><span id="bubblingG_1"></span><span id="bubblingG_2"></span><span id="bubblingG_3"></span></div> ',
+			onBeforeImgUpload: function(){ console.log('onBeforeImgUpload') },
+			onAfterImgUpload: function(){ console.log('onAfterImgUpload') },
+			onImgDrag: function(){ console.log('onImgDrag') },
+			onImgZoom: function(){ console.log('onImgZoom') },
+			onBeforeImgCrop: function(){ console.log('onBeforeImgCrop') },
+			onAfterImgCrop:function(){ console.log('onAfterImgCrop') }
+	}	
+	var croppic = new Croppic('croppic', croppicHeaderOptions);
+
 });
 </script>
