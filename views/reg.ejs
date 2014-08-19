@@ -24,6 +24,7 @@ $(function(){
                 success: function(result){
                     if(0 == result.status){
                     	toastr.success(result.content);
+                    	window.location.href = '/';
                     }else{
                     	toastr.error(result.content);
                     }

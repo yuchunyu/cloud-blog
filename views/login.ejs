@@ -9,6 +9,7 @@
 <script type="text/javascript">
 $(function(){
 	var userName,passWord;
+
 	//登录
 	$('#login').click(function(){
 		userName = $('#userName').val();
@@ -23,6 +24,7 @@ $(function(){
                 	console.log(result);
                     if(0 == result.status){
                     	toastr.success(result.content);
+                    	window.location.href = '/';
                     }else{
                     	toastr.error(result.content);
                     }

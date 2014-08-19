@@ -16,9 +16,43 @@
 			<textarea class="ckeditor form-control text" name="editor1" id="textEditable"></textarea>
 		</div>
 		<div>
-			<a class="addBtn" href="###">提交</a>
+			<a class="addBtn" href="###" id="insertArticle">提交</a>
 		</div>
 	</div>
 </div>
+<%- include footer %>
 <script type="text/javascript" src="ckeditor/ckeditor.js"></script>  
 <script type="text/javascript" src="ckeditor/config.js"></script>  
+<script type="text/javascript">
+$(function(){
+	$('#insertArticle').click(function(){
+		var title = $('input[type=text]').val();
+		var content = CKEDITOR.instances.textEditable.getData();
+		var type = $('input[type=checkbox]').is(':checked') ? 'public' : 'private';
+		if('' == title){
+			toastr.error('文章标题不能为空。');
+			return;
+		}
+		if('' == content){
+			toastr.error('文章内容不能为空。');
+			return;
+		}
+		console.log(title,type,content);
+		$.ajax({
+            type: 'POST',
+            url: '/insertArticle',
+            data: {title : title, content : content,type : type},
+            success: function(result){
+            	console.log(result);
+                if(0 == result.status){
+                	toastr.success(result.content);
+                	// window.location.href = '/';
+                }else{
+                	toastr.error(result.content);
+                }
+            }
+        });
+
+	});
+});
+</script>
