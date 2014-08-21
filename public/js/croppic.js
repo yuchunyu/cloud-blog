@@ -81,7 +81,7 @@
 			that.objW = that.obj.width();
 			that.objH = that.obj.height();
 			
-			if( $.isEmptyObject(that.defaultImg)){ that.defaultImg = that.obj.find('img'); }
+			if( $.isEmptyObject(that.defaultImg)){that.defaultImg = that.obj.find('img'); }
 			
 			that.createImgUploadControls();
 			that.bindImgUploadControl();
@@ -140,7 +140,6 @@
 			}
 											
 			that.form.find('input[type="file"]').change(function(){
-				
 				if (that.options.onBeforeImgUpload) that.options.onBeforeImgUpload.call(that);
 				
 				that.showLoader();
@@ -153,7 +152,6 @@
 						formData.append( key , that.options.uploadData[key] );	
 					}
 				}
-				
 				$.ajax({
                     url: that.options.uploadUrl,
                     data: formData,
@@ -164,7 +162,7 @@
                     type: 'POST'
 				}).always(function(response){
 					// response = jQuery.parseJSON(data);
-					if(response.status=='success'){
+					if(response.status==0){
 						
 						that.imgInitW = that.imgW = response.width;
 						that.imgInitH = that.imgH = response.height;
@@ -183,10 +181,10 @@
 						
 					}
 					
-					if(response.status=='error'){
+					if(response.status==-1){
 						that.obj.append('<p style="width:100%; height:100%; text-align:center; line-height:'+that.objH+'px;">'+response.message+'</p>');
 						that.hideLoader();
-						setTimeout( function(){ that.reset(); },2000)
+						setTimeout( function(){ that.reset(); },3000)
 					}
 					
 
@@ -446,7 +444,7 @@
                 type: 'POST'
 				}).always(function(data){
 					response = jQuery.parseJSON(data);
-					if(response.status=='success'){
+					if(response.status==0){
 						
 						that.imgEyecandy.hide();
 						
@@ -462,7 +460,7 @@
 						that.hideLoader();
 
 					}
-					if(response.status=='error'){
+					if(response.status==-1){
 						that.obj.append('<p style="width:100%; height:100%;>'+response.message+'</p>">');
 					}
 					

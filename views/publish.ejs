@@ -1,18 +1,13 @@
 <%- include header %>
 <link href="css/croppic.css" rel="stylesheet">
 <style type="text/css">
-.publish{cursor:pointer;height:auto;-moz-border-radius: 8px;-webkit-border-radius: 8px;border-radius:8px;-moz-box-shadow:0 0 11px #666666;-webkit-box-shadow:0 0 11px #666666;box-shadow:0 0 11px #666666;background:#ffffff;overflow:hidden;}
-.publish .title{border-bottom: 1px #ccc solid;}
-.publish .title h1{margin: 15px 0px 5px 15px;} 
-.publish .pTitleBox{margin: 5px 15px 15px 15px;overflow:hidden;}
-.publish .pContentBox{margin: 5px 15px 15px 15px;overflow:hidden;}
+
 </style>
 <div class="content">
-	<div class="publish">
+	<div class="panelBox publishPanel">
 		<div class="title">
 			<h1>发布文章</h1>
 		</div>
-		<br />
 		<div class="pTitleBox">
 			<span class="pTitle">文章标题:</span>
 			<input type="text" name="title" class="pTitleText"/>
@@ -21,21 +16,15 @@
 			<span class="addBtn" style="margin: 0;" id="cropContainerHeaderButton">上传栏目图</span>
 		</div>
 		<div class="pContentBox">
-			<div class="fl" style="width:28%;overflow:hidden;height:310px;">
+			<div class="fl" style="width:25%;overflow:hidden;height:310px;">
 				<div id="croppic">
-					<div class="cropControls cropControlsUpload">  
-					</div>
-					<form class="croppic_imgUploadForm" style="display: none; visibility: hidden;">  
-						<input type="file" name="img">
-					</form>
 				</div>
 			</div>
-			<div class="fl" style="width:72%">
+			<div class="fl" style="width:75%">
 				<textarea class="ckeditor form-control text" name="editor1" id="textEditable"></textarea>
 			</div>
-			
 		</div>
-		<div>
+		<div class="pBtn">
 			<a class="addBtn" href="###" id="insertArticle">提交</a>
 		</div>
 	</div>
@@ -51,19 +40,33 @@ $(function(){
 		var title = $('input[type=text]').val();
 		var content = CKEDITOR.instances.textEditable.getData();
 		var type = $('input[type=checkbox]').is(':checked') ? 'public' : 'private';
+		var imageSrc = $('.cropImgWrapper img').attr('src');
 		if('' == title){
 			toastr.error('文章标题不能为空。');
+			return;
+		}
+		if(title.length > 21){
+			toastr.error('文章标题字数不能超过22个字。');
+			return;
+		}
+		var reg = /select|insert|delect|update/img;
+		if(reg.test(title)){
+			toastr.error('请不要输入sql，你有破坏的心态呦~');
+			return;
+		}
+		var reg2 = /script|alert|1=1|115.29.138.216|8080|url|<|>/img;
+		if(reg2.test(title)){
+			toastr.error('这么小一个博客网站，就别破坏了吧。');
 			return;
 		}
 		if('' == content){
 			toastr.error('文章内容不能为空。');
 			return;
 		}
-		console.log(title,type,content);
 		$.ajax({
             type: 'POST',
             url: '/insertArticle',
-            data: {title : title, content : content,type : type},
+            data: {title : title, content : content,type : type,imageSrc : imageSrc},
             success: function(result){
             	console.log(result);
                 if(0 == result.status){
@@ -80,16 +83,11 @@ $(function(){
 
 	var croppicHeaderOptions = {
 			uploadUrl:'/imgSaveToFile',
-			// cropData:{
-			// 	"dummyData":1,
-			// 	"dummyData2":"asdas"
-			// },
-			// cropUrl:'/imgCropToFile',
 			customUploadButtonId:'cropContainerHeaderButton',
 			modal:false,
 			imgEyecandy:false,
 			loaderHtml:'<div class="loader bubblingG"><span id="bubblingG_1"></span><span id="bubblingG_2"></span><span id="bubblingG_3"></span></div> ',
-			onBeforeImgUpload: function(){ console.log('onBeforeImgUpload') },
+			onBeforeImgUpload: function(){ console.log('onBeforeImgUpload');return; },
 			onAfterImgUpload: function(){ console.log('onAfterImgUpload') },
 			onImgDrag: function(){ console.log('onImgDrag') },
 			onImgZoom: function(){ console.log('onImgZoom') },

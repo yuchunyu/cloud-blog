@@ -10,32 +10,22 @@
     <script src="/js/toastr.js" type="text/javascript"></script>
     <script src="/js/masonry.pkgd.min.js" type="text/javascript"></script>
     <script src="/js/jquery.lazyload.min.js" type="text/javascript"></script>
-    <script type="text/javascript">
-    $(function(){
-        $.ajax({
-            url: '/getID',
-            type: 'get',
-            success: function(result){
-                if(result){
-                    $("#userIds").text(result);
-                }
-            }
-        });
-    });
-  </script>
   </head>
   <body>
     <div class="topbar">
         <ul id="menu">
             <li class="fl logo"><a href="/">&nbsp;&nbsp;NodeBlog&nbsp;&nbsp;</a></li>
             <li class="fl"><a href="/">主页</a></li>
-            <li class="fl"><a href="/blog">我的博客</a></li>
+            <% if(user){ %>
+            <li class="fl"><a href="/blog/<%- user.name || '' %>">我的博客</a></li>
             <li class="fl"><a href="/publish">发表文章</a></li>
             <li class="fr"><a href="/logout">退出</a></li>
+            <!-- <li class="fr"><a href="/updatePassword">修改密码</a></li> -->
+            <% }else{ %>
             <li class="fr"><a href="/login">登录</a></li>
             <li class="fr"><a href="/reg">注册</a></li>
-            <li class="fr"><a href="/updatePassword">修改密码</a></li>
-            <li class="fr"><a href="###" id="userIds"></a></li>
+            <% } %>
+            <li class="fr"><a href="###" id="userIds">您好，<%- user.name || '游客' %></a></li>
         </ul>
         <div class="headbar">
             <div class="fl"><h1>NodeBlog</h1></div>

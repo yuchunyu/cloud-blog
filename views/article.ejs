@@ -1,32 +1,35 @@
 <%- include header %>
-<div class="center">
-	<div class="content_box">
-		<div class="content_cl">
-			<ul>
-				<li><h2>2014 / 07 / 28</h2></li>
-				<li class="user">admin</li>
-				<li class="clock">22:22:22</li>
-				<li class="permalink">
-					公开｜私人
-				</li>
-			</ul>
+<div class="content">
+	<div class="panelBox articlePanel">
+		<div class="title">
+			<p><h1><%- article.title %></h1></p>
 		</div>
-		<div class="content_cr">
-			<p><h1>"风暴追逐者" 拍摄惊人沙尘暴</h1></p>
-			<p>
-				<span><a class="edit" href="###">修改</a></span>
-				<span><a class="edit" href="###">删除</a></span>
-			</p>
-			<div class="content_txt">
-				<p>
-					2014年7月28日消息，美国亚利桑那州凤凰城，沙尘暴来袭。39岁的“风暴追逐者”Mike Olbinksi在橙色“沙墙”向城市推进时拍摄到了这些惊人的画面。气象学家称，每年此时，亚利桑那州都是沙尘暴的“重灾区”。统计数字显示，当地平均每年要遭遇3到4次大型沙尘暴（能见度小于400米）袭击。
-					2014年7月28日消息，美国亚利桑那州凤凰城，沙尘暴来袭。39岁的“风暴追逐者”Mike Olbinksi在橙色“沙墙”向城市推进时拍摄到了这些惊人的画面。气象学家称，每年此时，亚利桑那州都是沙尘暴的“重灾区”。统计数字显示，当地平均每年要遭遇3到4次大型沙尘暴（能见度小于400米）袭击。
-					2014年7月28日消息，美国亚利桑那州凤凰城，沙尘暴来袭。39岁的“风暴追逐者”Mike Olbinksi在橙色“沙墙”向城市推进时拍摄到了这些惊人的画面。气象学家称，每年此时，亚利桑那州都是沙尘暴的“重灾区”。统计数字显示，当地平均每年要遭遇3到4次大型沙尘暴（能见度小于400米）袭击。
-					2014年7月28日消息，美国亚利桑那州凤凰城，沙尘暴来袭。39岁的“风暴追逐者”Mike Olbinksi在橙色“沙墙”向城市推进时拍摄到了这些惊人的画面。气象学家称，每年此时，亚利桑那州都是沙尘暴的“重灾区”。统计数字显示，当地平均每年要遭遇3到4次大型沙尘暴（能见度小于400米）袭击。
-					2014年7月28日消息，美国亚利桑那州凤凰城，沙尘暴来袭。39岁的“风暴追逐者”Mike Olbinksi在橙色“沙墙”向城市推进时拍摄到了这些惊人的画面。气象学家称，每年此时，亚利桑那州都是沙尘暴的“重灾区”。统计数字显示，当地平均每年要遭遇3到4次大型沙尘暴（能见度小于400米）袭击。
-					2014年7月28日消息，美国亚利桑那州凤凰城，沙尘暴来袭。39岁的“风暴追逐者”Mike Olbinksi在橙色“沙墙”向城市推进时拍摄到了这些惊人的画面。气象学家称，每年此时，亚利桑那州都是沙尘暴的“重灾区”。统计数字显示，当地平均每年要遭遇3到4次大型沙尘暴（能见度小于400米）袭击。
-				</p>
+		<div class="pContentBox">
+			<div class="fl" style="width:65%;border-right:1px #ccc dashed;margin-left:-1px;">
+				<div style="margin-right:10px;min-height:50px;">
+					<%- article.content %>
+				</div>
+			</div>
+			<div class="fl" style="width:35%;">
+				<div style="margin-left:10px;">
+					<div class="pImageBox">
+						<% if(article.imageSrc){ %>
+						<p class="pImageInfo pImageInfoBg"><b><%- article.userName %></b>&nbsp;&nbsp;&nbsp;&nbsp;<b><%- article.createDate %></b>&nbsp;&nbsp;&nbsp;&nbsp;</p>
+						<img class="lazy" src="../../<%- article.imageSrc %>" width="100%">
+						<% }else{ %>
+						<p class="pImageInfo"><b><%- article.userName %></b>&nbsp;&nbsp;&nbsp;&nbsp;<b><%- article.createDate %></b>&nbsp;&nbsp;&nbsp;&nbsp;</p>
+						<% }%>
+					</div>
+					
+
+					<!-- <ul>
+						<li><%- article.createDate %></li>
+						<li class="user"></li>
+					</ul> -->
+				</div>
 			</div>
 		</div>
+		<div class="pBtn"></div>
 	</div>
 </div>
+<%- include footer %>

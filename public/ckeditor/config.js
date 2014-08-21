@@ -5,6 +5,7 @@
 
 CKEDITOR.editorConfig = function( config ) {
     config.toolbar = 'Full';
+    config.resize_enabled = false;
     config.toolbar_Full = [{
         name: 'basicstyles',
         items: ['Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', '-', 'RemoveFormat']
@@ -22,13 +23,13 @@ CKEDITOR.editorConfig = function( config ) {
         items: ['Font', 'FontSize']
     },
     {
+        name: 'tools',
+        items: ['Maximize',]
+    },
+    {
         name: 'styles',
         items: ['Styles', 'Format']
     },
-    {
-        name: 'tools',
-        items: ['Maximize',]
-    }, 
     {
         name: 'paragraph',
         items: ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', '-', 'BidiLtr', 'BidiRtl']

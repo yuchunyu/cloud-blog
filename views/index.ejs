@@ -2,9 +2,11 @@
 <div id="container" class="center">
 	<% articleList.forEach(function(article){ %>
 	<div class="info">
-		<a href="###" rel=<%- article._id %> >
+		<a href="/article/<%- article.userName %>/<%- article._id %>" >
 			<div class="pic">
-				 <!-- <img class="lazy" src="images/pixel.gif" data-original="image/o2.jpg"> -->
+				<% if(article.imageSrc){ %>
+					<img class="lazy" src="images/pixel.gif" data-original="<%= article.imageSrc %>">
+				<% } %>			 
 			</div>
 			<div class="title">
 				<span><%- article.title %></span>
@@ -12,7 +14,7 @@
 			<div class="desc">
 				<span><%- article.content %></span>
 			</div>
-			<div class="user">
+			<div class="userInfo">
 				<span>
 					<i class="fa fa-comment-o"></i>0
 					<i class="fa fa-user"></i><%- article.userName %>
@@ -23,37 +25,23 @@
 	</div>
 	<% }) %>
 </div>
-<p id="back-to-top"><a href="###"><i class="fa fa-arrow-circle-o-up"></i>返回顶部</a></p>
 <script type="text/javascript">
 $(function(){
-	//返回顶部
-	$("#back-to-top").hide();
-	$(window).scroll(function(){
-		if($(window).scrollTop() > 100){
-			$("#back-to-top").fadeIn(1500);
-		}else{
-			$("#back-to-top").fadeOut(1500);
+	//瀑布流
+	$("img.lazy").lazyload({//图片懒加载
+		load:function(){
+			var $container = $('#container');
+			$container.masonry({//瀑布流
+			  columnWidth: 0,
+			  itemSelector: '.info'
+			});
 		}
 	});
-	$("#back-to-top").click(function(){
-		$('body,html').animate({scrollTop:0},1000);
-		return false;	
-	});
-	//瀑布流
-	// $("img.lazy").lazyload({//图片懒加载
-	// 	load:function(){
-	// 		var $container = $('#container');
-	// 		$container.masonry({//瀑布流
-	// 		  columnWidth: 0,
-	// 		  itemSelector: '.info'
-	// 		});
-	// 	}
+	// var $container = $('#container');
+	// $container.masonry({//瀑布流
+	//   columnWidth: 0,
+	//   itemSelector: '.info'
 	// });
-	var $container = $('#container');
-	$container.masonry({//瀑布流
-	  columnWidth: 0,
-	  itemSelector: '.info'
-	});
 });
 
 

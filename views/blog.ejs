@@ -1,73 +1,75 @@
 <%- include header %>
-<div style="overflow:hidden;width:100%;">
-<div class="content_c">
-	<div class="content_box">
-		<div class="content_cl">
-			<ul>
-				<li><h2>2014 / 07 / 28</h2></li>
-				<li class="user">admin</li>
-				<li class="clock">22:22:22</li>
-				<li class="permalink">
-					公开｜私人
-				</li>
-			</ul>
-		</div>
-		<div class="content_cr">
-			<p><h1><a href="###">"风暴追逐者"拍摄惊人沙尘暴</a></h1></p>
-			<div class="content_txt">
-				<p>
-					2014年7月28日消息，美国亚利桑那州凤凰城，沙尘暴来袭。39岁的“风暴追逐者”Mike Olbinksi在橙色“沙墙”向城市推进时拍摄到了这些惊人的画面。气象学家称，每年此时，亚利桑那州都是沙尘暴的“重灾区”。统计数字显示，当地平均每年要遭遇3到4次大型沙尘暴（能见度小于400米）袭击。
-				</p>
-			</div>
-		</div>
-		<a href="###" class="more">read more...</a>
-	</div>
-	<div class="content_box">
-		<div class="content_cl">
-			<ul>
-				<li><h2>2014 / 07 / 28</h2></li>
-				<li class="user">admin</li>
-				<li class="clock">22:22:22</li>
-				<li class="permalink">
-					公开｜私人
-				</li>
-			</ul>
-		</div>
-		<div class="content_cr">
-			<p><h1><a href="###">"风暴追逐者"拍摄惊人沙尘暴</a></h1></p>
-			<div class="content_txt">
-				<p>
-					2014年7月28日消息，美国亚利桑那州凤凰城，沙尘暴来袭。39岁的“风暴追逐者”Mike Olbinksi在橙色“沙墙”向城市推进时拍摄到了这些惊人的画面。气象学家称，每年此时，亚利桑那州都是沙尘暴的“重灾区”。统计数字显示，当地平均每年要遭遇3到4次大型沙尘暴（能见度小于400米）袭击。
-				</p>
-			</div>
-		</div>
-		<a href="###" class="more">read more...</a>
-	</div>
-	<div class="content_box">
-		<div class="content_cl">
-			<ul>
-				<li><h2>2014 / 07 / 28</h2></li>
-				<li class="user">admin</li>
-				<li class="clock">22:22:22</li>
-				<li class="permalink">
-					公开｜私人
-				</li>
-			</ul>
-		</div>
-		<div class="content_cr">
-			<p><h1><a href="###">"风暴追逐者"拍摄惊人沙尘暴</a></h1></p>
-			<div class="content_txt">
-				<p>
-					2014年7月28日消息，美国亚利桑那州凤凰城，沙尘暴来袭。39岁的“风暴追逐者”Mike Olbinksi在橙色“沙墙”向城市推进时拍摄到了这些惊人的画面。气象学家称，每年此时，亚利桑那州都是沙尘暴的“重灾区”。统计数字显示，当地平均每年要遭遇3到4次大型沙尘暴（能见度小于400米）袭击。
-				</p>
-			</div>
-		</div>
-		<a href="###" class="more">read more...</a>
-	</div>
+<style type="text/css">
+/* index */
+.blogBox{padding:50px 0;}
+.blogBox li{border-left: 2px solid #f1f0ee;margin:18px 10%;padding: 30px 0 40px 40px;position:relative;}
+.blogBox .timeNode{position:absolute;height:30px;left:-9px;top:-18px;}
+.blogBox .timeNode *{position:absolute;}
+.blogBox .timeNode .icon{top:0;width:14px;height:14px;border:2px solid #f1f0ee;border-radius:50%;}
+.blogBox .timeNode .time{top:0;left:17px;display:inline-block;background:#f7f3ee;padding:3px 20px;font:14px/24px '';color:#948C76;border-radius:0 5px 5px 0;}
+.blogBox .timeNode a{left:33px;top:-5px;transition:all .3s ease;}
+.blogBox .timeNode a:hover{left:25px;}
+.blogBox .timeNode a:hover span{transition:.2s ease;}
+.blogBox .timeNode a:hover span.time{background:#e7d9ba;}
+.blogBox .timeNode a:hover span.t{border-right:17px solid #e7d9ba;}
+.blogBox .timeNode .t{top:0;border-right:17px solid #f7f3ee;border-top:15px dashed transparent;border-bottom:15px dashed transparent;width:0;height:0;font-size:0;line-height:0;}
+.blogLi{overflow: hidden;}
+.blogLi .blogLiImage{width:250px;float: left;margin-right: 20px;}
+/*.blogLi .blogLiContent{float: left;}*/
+.blogLi .blogLiImage img{border-radius:5px;background: #fff;padding: 3px;border: 1px #ccc solid;}
+.blogLi .blogLiImage img:hover{-webkit-animation:tada 1s .2s ease both;-moz-animation:tada 1s .2s ease both;}
+@-webkit-keyframes tada{
+    0%{-webkit-transform:scale(1);}
+    10%, 20%{-webkit-transform:scale(0.9) rotate(-3deg);}
+    30%, 50%, 70%, 90%{-webkit-transform:scale(1) rotate(3deg);}
+    40%, 60%, 80%{-webkit-transform:scale(1) rotate(-3deg);}
+    100%{-webkit-transform:scale(1) rotate(0);}
+}
+@-moz-keyframes tada{
+    0%{-moz-transform:scale(1);}
+    10%, 20%{-moz-transform:scale(0.9) rotate(-3deg);}
+    30%, 50%, 70%, 90%{-moz-transform:scale(1) rotate(3deg);}
+    40%, 60%, 80%{-moz-transform:scale(1) rotate(-3deg);}
+    100%{-moz-transform:scale(1) rotate(0);}
+}		
 
-	<div class="pageBox">
-	    <span class="prepage"><a title="上一页" href="###">上一页</a></span>
-	    <span class="nextpage"><a title="下一页" href="###">下一页</a></span>
+</style>
+<div class="content">
+	<div class="panelBox blogPanel">
+		<ul class="blogBox">
+			<% if(!articleList.length){ %>
+				<h1 align="center">暂无博客</h1>
+			<% } %>
+			<% articleList.forEach(function(article){ %>
+	        <li>
+	            <div class="blogLi">
+	            	<a href="/article/<%- article.userName %>/<%- article._id %>" >
+	            	<% if(article.imageSrc){ %>
+	            	<div class="blogLiImage">
+	            		<img class="lazy" src="../../<%- article.imageSrc %>" width="100%">
+	            	</div>
+	            	<% } %>
+	            	<div class="blogLiContent">
+	            		<h1><%- article.title %></h1>
+		                <h4><i class="fa fa-user"></i>&nbsp;&nbsp;<%- article.userName %>&nbsp;&nbsp;<i class="fa fa-comment-o"></i>&nbsp;&nbsp;0&nbsp;&nbsp;<i class="fa fa-thumbs-o-up"></i>&nbsp;&nbsp;0&nbsp;&nbsp;<i class="fa fa-thumbs-o-down"></i>&nbsp;&nbsp;0</h4>
+		                <div>
+		                    <%- article.content %>
+		                </div>
+	            	</div>
+	                </a>
+	            </div>
+	            <div class="timeNode">
+	                <div class="icon"></div>
+	                <a href="#">
+	                    <span class="t"></span>
+	                    <span class="time wrap"><%- article.createDate %></span>
+	                </a>
+	            </div>
+	        </li>
+	        <% }) %>
+	    </ul>
+		
 	</div>
 </div>
-<div>
+
+<%- include footer %>
