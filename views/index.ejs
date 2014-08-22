@@ -1,47 +1,97 @@
 <%- include header %>
 <div id="container" class="center">
-	<% articleList.forEach(function(article){ %>
-	<div class="info">
-		<a href="/article/<%- article.userName %>/<%- article._id %>" >
-			<div class="pic">
-				<% if(article.imageSrc){ %>
-					<img class="lazy" src="images/pixel.gif" data-original="<%= article.imageSrc %>">
-				<% } %>			 
-			</div>
-			<div class="title">
-				<span><%- article.title %></span>
-			</div>
-			<div class="desc">
-				<span><%- article.content %></span>
-			</div>
-			<div class="userInfo">
-				<span>
-					<i class="fa fa-comment-o"></i>0
-					<i class="fa fa-user"></i><%- article.userName %>
-					<i class="fa fa-calendar"></i><%- article.createDate%>
-				</span>
-			</div>
-		</a>
-	</div>
-	<% }) %>
+	<ul></ul>
+    <ul></ul>
+    <ul></ul>
+    <ul></ul>
 </div>
 <script type="text/javascript">
 $(function(){
-	//瀑布流
-	$("img.lazy").lazyload({//图片懒加载
-		load:function(){
-			var $container = $('#container');
-			$container.masonry({//瀑布流
-			  columnWidth: 0,
-			  itemSelector: '.info'
-			});
-		}
+	
+	
+	$('#container').delegate('img.lazy','mouseenter',function(){
+		$(this).stop().animate({opacity : 0.6});//鼠标移入事件
 	});
-	// var $container = $('#container');
-	// $container.masonry({//瀑布流
-	//   columnWidth: 0,
-	//   itemSelector: '.info'
-	// });
+	$('#container').delegate('img.lazy','mouseleave',function(){
+		$(this).stop().animate({opacity : 1});//鼠标移出事件
+	});
+	var num = 1;
+	getIndex();
+	//设置滚动加载
+	window.onscroll = window.onresize = function(){
+		var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+		// console.log(document.documentElement.scrollHeight - document.documentElement.clientHeight - 150 , scrollTop);
+		if(document.documentElement.scrollHeight - document.documentElement.clientHeight == scrollTop){
+			getIndex();
+		}
+	};
+	//获取
+	function getIndex(){
+		$.ajax({
+	        type: 'POST',
+	        url: '/getIndex',
+	        data: {page : num},
+	        success: function(result){
+	            if(0 == result.status){
+					num++;
+	            	createLi(result.articleList);
+	            }else{
+	            	toastr.error(result.content);
+	            }
+	        }
+		});
+	}
+	function createLi(data){
+		var aUl = $('#container ul');
+		for(var i = 0; i < data.length; i++){
+			var oHtml = '';
+			if(data[i].imageSrc){
+				var oImg = new Image();
+				oImg.src = data[i].imageSrc;
+				oImg.title = data[i].title;
+				oImg.content = data[i].content;
+				oImg.userName = data[i].userName;
+				oImg._id = data[i]._id;
+				oImg.createDate = data[i].createDate;
+				dataJson = data[i];
+				oImg.onload = function (){
+					oHtml = '<div class="info"><a href="/article/' + this.userName + '/' + this._id + '" ><div class="pic"><img class="lazy" src="' + this.src + '"></div><div class="title"><span>' + this.title + '</span></div><div class="desc"><span>' + this.content + '</span></div><div class="userInfo"><span><i class="fa fa-comment-o"></i>0<i class="fa fa-user"></i>' + this.userName + '<i class="fa fa-calendar"></i>' + this.createDate + '</span></div></a></div>';
+					var oLi = $('<li></li>').html(oHtml);
+					//原始宽高
+					oLi.get(0).children[0].height = 280 * this.height / this.width;
+					//判断哪一个最短
+					var arr = [];
+					for(var j = 0; j < aUl.length; j++){
+						arr[j] = aUl[j];
+					}
+					arr.sort(function (ul1, ul2){
+						return ul1.offsetHeight - ul2.offsetHeight;
+					});
+					
+					//插入
+					oLi.appendTo(arr[0]);
+				};
+			}else{
+				oHtml = '<div class="info"><a href="/article/' + data[i].userName + '/' + data[i]._id + '" ><div class="pic"></div><div class="title"><span>' + data[i].title + '</span></div><div class="desc"><span>' + data[i].content + '</span></div><div class="userInfo"><span><i class="fa fa-comment-o"></i>0<i class="fa fa-user"></i>' + data[i].userName + '<i class="fa fa-calendar"></i>' + data[i].createDate + '</span></div></a></div>';
+				var oLi = $('<li></li>').html(oHtml);
+				//原始宽高
+				oLi.get(0).children[0].height = 280 * this.height / this.width;
+				//判断哪一个最短
+				var arr = [];
+				for(var j = 0; j < aUl.length; j++){
+					arr[j] = aUl[j];
+				}
+				arr.sort(function (ul1, ul2){
+					return ul1.offsetHeight - ul2.offsetHeight;
+				});
+				//插入
+				oLi.appendTo(arr[0]);
+			}
+			
+			
+		}		
+	}
+
 });
 
 

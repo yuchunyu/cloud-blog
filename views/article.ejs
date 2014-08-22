@@ -6,7 +6,7 @@
 		</div>
 		<div class="pContentBox">
 			<div class="fl" style="width:65%;border-right:1px #ccc dashed;margin-left:-1px;">
-				<div style="margin-right:10px;min-height:50px;">
+				<div style="margin-right:10px;min-height:250px;">
 					<%- article.content %>
 				</div>
 			</div>
@@ -20,12 +20,9 @@
 						<p class="pImageInfo"><b><%- article.userName %></b>&nbsp;&nbsp;&nbsp;&nbsp;<b><%- article.createDate %></b>&nbsp;&nbsp;&nbsp;&nbsp;</p>
 						<% }%>
 					</div>
-					
-
-					<!-- <ul>
-						<li><%- article.createDate %></li>
-						<li class="user"></li>
-					</ul> -->
+					<div class="pUserBox">
+						<p class="pUserInfo"><b><a href='/blog/<%- article.userName %>'><i class="fa fa-paper-plane-o"></i>查看 <%- article.userName %> 的相关文章</a></p>
+					</div>
 				</div>
 			</div>
 		</div>

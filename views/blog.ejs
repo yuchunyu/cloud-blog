@@ -37,39 +37,58 @@
 <div class="content">
 	<div class="panelBox blogPanel">
 		<ul class="blogBox">
-			<% if(!articleList.length){ %>
-				<h1 align="center">暂无博客</h1>
-			<% } %>
-			<% articleList.forEach(function(article){ %>
-	        <li>
-	            <div class="blogLi">
-	            	<a href="/article/<%- article.userName %>/<%- article._id %>" >
-	            	<% if(article.imageSrc){ %>
-	            	<div class="blogLiImage">
-	            		<img class="lazy" src="../../<%- article.imageSrc %>" width="100%">
-	            	</div>
-	            	<% } %>
-	            	<div class="blogLiContent">
-	            		<h1><%- article.title %></h1>
-		                <h4><i class="fa fa-user"></i>&nbsp;&nbsp;<%- article.userName %>&nbsp;&nbsp;<i class="fa fa-comment-o"></i>&nbsp;&nbsp;0&nbsp;&nbsp;<i class="fa fa-thumbs-o-up"></i>&nbsp;&nbsp;0&nbsp;&nbsp;<i class="fa fa-thumbs-o-down"></i>&nbsp;&nbsp;0</h4>
-		                <div>
-		                    <%- article.content %>
-		                </div>
-	            	</div>
-	                </a>
-	            </div>
-	            <div class="timeNode">
-	                <div class="icon"></div>
-	                <a href="#">
-	                    <span class="t"></span>
-	                    <span class="time wrap"><%- article.createDate %></span>
-	                </a>
-	            </div>
-	        </li>
-	        <% }) %>
+			
 	    </ul>
-		
 	</div>
 </div>
 
 <%- include footer %>
+<script type="text/javascript">
+$(function(){
+	var num = 1;
+	getBlog();
+	//设置滚动加载
+	window.onscroll = window.onresize = function(){
+		var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+		// console.log(document.documentElement.scrollHeight - document.documentElement.clientHeight - 150 , scrollTop);
+		if(document.documentElement.scrollHeight - document.documentElement.clientHeight == scrollTop){
+			getBlog();
+		}
+	};
+	//获取
+	function getBlog(){
+		$.ajax({
+	        type: 'POST',
+	        url: '/blog',
+	        data: {page : num,userName:'<%= articleUserName %>'},
+	        success: function(result){
+	            if(0 == result.status){
+	            	if(num == 1 && result.articleList.length == 0){
+	            		$('.blogBox').html('<h1 align="center">暂无博客</h1>');
+	            	}else{
+	            		if(result.articleList.length != 0){
+	            			num++;
+	            			createLi(result.articleList);
+	            		}	
+	            	}
+					
+	            }else{
+	            	toastr.error(result.content);
+	            }
+	        }
+		});
+	}
+	function createLi(data){
+		var htmlLi = '';
+		for(var i = 0; i < data.length; i++){
+			htmlLi += '<li><div class="blogLi"><a href="/article/' + data[i].userName + '/' + data[i]._id + '" >';
+			if(data[i].imageSrc){
+				htmlLi += '<div class="blogLiImage"><img class="lazy" src="../../' + data[i].imageSrc + '" width="100%"></div>';
+			}
+           	htmlLi += '<div class="blogLiContent"><h1>' + data[i].title + '</h1><h4><i class="fa fa-user"></i>&nbsp;&nbsp;' + data[i].userName + '&nbsp;&nbsp;<i class="fa fa-comment-o"></i>&nbsp;&nbsp;0&nbsp;&nbsp;<i class="fa fa-thumbs-o-up"></i>&nbsp;&nbsp;0&nbsp;&nbsp;<i class="fa fa-thumbs-o-down"></i>&nbsp;&nbsp;0</h4><div>' + data[i].content + '</div></div></a></div><div class="timeNode"><div class="icon"></div><a href="#"><span class="t"></span><span class="time wrap">' + data[i].createDate + '</span></a></div></li>';
+		}
+		$('.blogBox').append(htmlLi);
+	}
+});
+
+</script>

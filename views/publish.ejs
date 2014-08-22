@@ -70,8 +70,8 @@ $(function(){
             success: function(result){
             	console.log(result);
                 if(0 == result.status){
-                	toastr.success(result.content);
-                	// window.location.href = '/';
+                	// toastr.success(result.content);
+                	window.location.href = '/';
                 }else{
                 	toastr.error(result.content);
                 }
