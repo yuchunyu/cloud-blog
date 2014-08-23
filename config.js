@@ -4,4 +4,6 @@ module.exports = {
 	INDEXPAGENUM: 20,//首页一页显示几个文章
 	INDEXWORDS:104,//首页一个文章多少字
 	BLOGPAGENUM: 10,//首页一页显示几个文章
+	// FILEPATH:'/Users/yves/MyGitHub/cloud-blog'
+	FILEPATH:'/yves/cloud-blog'
 }

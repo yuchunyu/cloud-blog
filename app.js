@@ -5,7 +5,8 @@ var express = require('express'),
     cookieParser = require('cookie-parser'),
     cookieSession = require('cookie-session'),
     bodyParser = require('body-parser'),
-    multer  = require('multer');
+    multer  = require('multer'),
+    config = require('./config.js');
 
 var routes = require('./lib/route');
 
@@ -15,7 +16,7 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
-app.use(multer({ dest: './public/temp'}));
+app.use(multer({ dest: config.FILEPATH + '/public/temp'}));
 app.use(favicon());
 app.use(logger('dev'));
 app.use(bodyParser.json());
