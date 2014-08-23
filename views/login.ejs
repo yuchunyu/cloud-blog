@@ -34,14 +34,14 @@ $(function(){
 	});
 
 	function changeCheck(){
-		var userPatrn = /^(\w){5,10}$/;
+		var userPatrn = /^(\w|[\u4e00-\u9fa5]){2,10}$/;
 		var pwdPatrn = /^(\w){5,10}$/;
 		if('' == userName){
 			toastr.warning('用户名不能为空');
 			return false;
 		}
 		if(!userPatrn.exec(userName)){
-			toastr.warning('用户名只能输入5-10个字母、数字、下划线');
+			toastr.warning('用户名只能输入2-10个字母、汉字、数字、下划线');
 			return false;
 		}
 		if('' == passWord){
