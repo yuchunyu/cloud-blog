@@ -1,4 +1,7 @@
 <%- include header %>
+<style type="text/css">
+	#contentBox pre{word-wrap:break-word; word-spacing:normal; text-overflow: hidden }
+</style>
 <div class="content">
 	<div class="panelBox articlePanel">
 		<div class="title">
@@ -6,7 +9,7 @@
 		</div>
 		<div class="pContentBox">
 			<div class="fl" style="width:65%;border-right:1px #ccc dashed;margin-left:-1px;">
-				<div style="margin-right:10px;min-height:250px;">
+				<div style="margin-right:10px;min-height:250px;" id="contentBox">
 					<%- article.content %>
 				</div>
 			</div>
