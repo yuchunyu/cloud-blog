@@ -41,7 +41,7 @@ $(function(){
 			return false;
 		}
 		if(!userPatrn.exec(userName)){
-			toastr.warning('用户名只能输入2-10个字母、数字、下划线');
+			toastr.warning('用户名只能输入2-10个字母、汉字、数字、下划线');
 			return false;
 		}
 		if('' == passWord || '' == passwordRepeat){
